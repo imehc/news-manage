@@ -23,7 +23,6 @@ const iconList = {
   "/right-manage/right/list": <UserOutlined />,
   "/news-manage": <UserOutlined />,
   "/news-manage/add": <UserOutlined />,
-  "/news-manage/add": <UserOutlined />,
   "/news-manage/draft": <UserOutlined />,
   "/news-manage/category": <UserOutlined />,
   "/audit-manage": <UserOutlined />,

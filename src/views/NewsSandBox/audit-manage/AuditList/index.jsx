@@ -7,7 +7,7 @@ export default function AuditList(props) {
   const { username } = JSON.parse(sessionStorage.getItem('token'))
   useEffect(() => {
     //jsonserver语法   _ne 不等于   _lte 小于等于  _expand 百度吧我也忘了
-    axios.get(`/news?author=${username}&auditState_ne=0&publishState_lte=1`).then(res => {
+    axios.get(`/news?author=${username}&auditState_ne=0&publishState_lte=1&_expand=category`).then(res => {
       console.log('审核列表', res.data);
       setDataSource(res.data)
     })
@@ -28,9 +28,9 @@ export default function AuditList(props) {
     {
       title: '新闻分类',
       dataIndex: 'category',
-      // render: (category) => {
-      //   return <div>{category.title}</div>
-      // }
+      render: (category) => {
+        return <div>{category.title}</div>
+      }
     },
     {
       title: '审核状态',
@@ -77,7 +77,8 @@ export default function AuditList(props) {
   //发布
   const handlePublish = (item) => {
     axios.patch(`/news/${item.id}`, {
-      "publishState": 2
+      "publishState": 2,
+      "publishTime": Date.now()
     }).then(res => {
       props.history.push(`/publish-manage/published`)
       notification.info({

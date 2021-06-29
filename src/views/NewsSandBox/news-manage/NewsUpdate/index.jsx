@@ -73,12 +73,12 @@ export default function NewUpdate(props) {
         title="更新新闻"
         subTitle="Write news"
         onBack={() => props.history.goBack()}
-      />,
+      />
       <Steps current={current}>
         <Step title="基本信息" description="新闻标题，新闻分类" />
         <Step title="新闻内容" description="新闻主题内容" />
         <Step title="新闻提交" description="保存草稿或提交审核" />
-      </Steps>,
+      </Steps>
       <div style={{ marginTop: '50px' }}>
         <div className={current === 0 ? '' : style.active}>
           <Form

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux';//引入connect
 
 import { Layout, Dropdown, Menu, Avatar } from 'antd';
 import { withRouter } from 'react-router-dom';
@@ -10,6 +11,7 @@ import {
 const { Header } = Layout;
 
 function TopHeader(props) {
+  console.log(props);//查看redux返回的值
   // 引入hooks
   const [collapsed, setCollapsed] = useState(false)
   const changeCollapsed = () => {
@@ -34,7 +36,7 @@ function TopHeader(props) {
         collapsed ? <MenuUnfoldOutlined onClick={changeCollapsed} /> : <MenuFoldOutlined onClick={changeCollapsed} />
       }
       <div style={{ float: "right" }}>
-        <span>欢迎<span style={{color:'rgb(135, 206, 235)'}}>{username}</span>回来</span>
+        <span>欢迎<span style={{ color: 'rgb(135, 206, 235)' }}>{username}</span>回来</span>
         <Dropdown overlay={menu} >
           <Avatar size="large" icon={<UserOutlined />} style={{ marginLeft: 10 }} />
         </Dropdown>
@@ -42,5 +44,18 @@ function TopHeader(props) {
     </Header>
   )
 }
+/*
+connect(
+  //mapStateToProps
+  //mapDispatchToProps
+)(被包装的组件)
+*/
 
-export default withRouter(TopHeader)
+const mapStateToProps = ({ CollApsedReducer: { isCollapsed } }) => {
+  // console.log('redux的值', state);
+  return {
+    isCollapsed
+  }
+}
+
+export default connect(mapStateToProps)(withRouter(TopHeader))

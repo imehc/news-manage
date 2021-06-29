@@ -9,7 +9,7 @@ import RightList from '../views/NewsSandBox/right-manage/right'
 import NoPermission from '../views/NewsSandBox/nopermission'
 import NewsAdd from '../views/NewsSandBox/news-manage/NewsAdd'
 import NewsDraft from '../views/NewsSandBox/news-manage/NewsDraft'
-import NewsCategoty from '../views/NewsSandBox/news-manage/NewsCategoty'
+import NewsCategory from '../views/NewsSandBox/news-manage/NewsCategory'
 import NewsPreview from '../views/NewsSandBox/news-manage/NewsPreview'//预览
 import NewsUpdate from '../views/NewsSandBox/news-manage/NewsUpdate'//更新
 import Audit from '../views/NewsSandBox/audit-manage/Audit'
@@ -26,7 +26,7 @@ const LocalRouterMap = {
   "/right-manage/right/list": RightList,
   "/news-manage/add": NewsAdd,
   "/news-manage/draft": NewsDraft,
-  "/news-manage/category": NewsCategoty,
+  "/news-manage/category": NewsCategory,
   "/news-manage/preview/:id": NewsPreview,
   "/news-manage/update/:id": NewsUpdate,
   "/audit-manage/audit": Audit,

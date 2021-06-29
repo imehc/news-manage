@@ -17,7 +17,7 @@ export default function NewsAdd(props) {
   const handleNext = () => {//下一步
     if (current === 0) {
       NewsForm.current.validateFields().then(res => {
-        // console.log(res)
+        console.log('标题 分类', res)
         setFromInfo(res)
         setCurrent(current + 1)
       }).catch(err => console.log(err))
@@ -70,12 +70,12 @@ export default function NewsAdd(props) {
         className="site-page-header"
         title="撰写新闻"
         subTitle="Write news"
-      />,
+      />
       <Steps current={current}>
         <Step title="基本信息" description="新闻标题，新闻分类" />
         <Step title="新闻内容" description="新闻主题内容" />
         <Step title="新闻提交" description="保存草稿或提交审核" />
-      </Steps>,
+      </Steps>
       <div style={{ marginTop: '50px' }}>
         <div className={current === 0 ? '' : style.active}>
           <Form
@@ -93,7 +93,7 @@ export default function NewsAdd(props) {
             </Form.Item>
             <Form.Item
               label="新闻分类"
-              name="categoty"
+              name="categoryId"
               rules={[{ required: true, message: 'Please select your news category!' }]}
             >
               <Select >
@@ -110,7 +110,7 @@ export default function NewsAdd(props) {
             setContent(value)
           }} />
         </div>
-        <div className={current === 2 ? '' : style.active}>333</div>
+        {/* <div className={current === 2 ? '' : style.active}>333</div> */}
         <div style={{ marginTop: "50px" }}>
           {
             current === 2 && <span>

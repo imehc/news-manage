@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Button, Table, notification } from 'antd'
-
+import { Button, Table, notification, Tooltip } from 'antd'
+import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 export default function Audit() {
   const [dataSource, setDataSource] = useState([])
 
@@ -33,16 +33,20 @@ export default function Audit() {
     {
       title: '新闻分类',
       dataIndex: 'category',
-      // render: (category) => {
-      //   return <div>{category.title}</div>
-      // }
+      render: (category) => {
+        return <div>{category.title}</div>
+      }
     },
     {
       title: '操作',
       render: (item) => {
         return <div>
-          <Button type="primary" onClick={() => handleAudit(item, 2, 1)}>通过</Button>
-          <Button danger onClick={() => handleAudit(item, 3, 0)}>驳回</Button>
+          <Tooltip placement="top" title="通过" color="green">
+            <Button shape="circle" icon={<CheckOutlined />} style={{ marginRight: '5px', backgroundColor: 'rgb(47, 194, 47)', color: '#ffffff' }} onClick={() => handleAudit(item, 2, 1)} />
+          </Tooltip>
+          <Tooltip placement="top" title="驳回" color="red">
+            <Button danger type="primary" shape="circle" icon={<CloseOutlined />} style={{ marginLeft: '5px' }} onClick={() => handleAudit(item, 3, 0)} />
+          </Tooltip>
         </div>
       }
     },

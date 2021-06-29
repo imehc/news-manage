@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Button, Table, Switch, Modal } from 'antd'
 import axios from 'axios'
 import { EditOutlined, DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
-import UserFrom from '../../../components/user_manage';
+import UserFrom from '../../../components/user_manage/UserFrom';
 const { confirm } = Modal;
 
 

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import axios from 'axios'
+import { Spin } from 'antd'
+import { connect } from 'react-redux'
 //引入自己写的组件
 import Home from '../views/NewsSandBox/home'
 import UserList from '../views/NewsSandBox/user-manage'
@@ -35,7 +37,7 @@ const LocalRouterMap = {
   "/publish-manage/published": Published,
   "/publish-manage/sunset": Sunset
 }
-export default function NewsRouter() {
+function NewsRouter(props) {
   const [BankRouteList, setBankRouteList] = useState([])
   useEffect(() => {
     Promise.all([
@@ -55,26 +57,36 @@ export default function NewsRouter() {
     return rights.includes(item.key)
   }
   return (
-    <Switch>
-      {/* <Route path="/home" component={Home} />
+    <Spin size="large" spinning={props.isLoading}>
+      <Switch>
+        {/* <Route path="/home" component={Home} />
       <Route path="/user-manage/list" component={UserList} />
       <Route path="/right-manage/role/list" component={RoleList} />
       <Route path="/right-manage/right/list" component={RightList} /> */}
-      {
-        BankRouteList.map(item => {
-          // console.log(BankRouteList);
-          if (checkRoute(item) && checkUserPermission(item)) {
-            return <Route path={item.key} key={item.key} component={LocalRouterMap[item.key]} exact></Route>
-          }
-          return null
-        })
-      }
-      {/* exact 精确匹配 */}
-      <Redirect from="/" to="/home" exact />
-      {/* 都不满足走此路由 */}
-      {
-        BankRouteList.length > 0 && <Route path="*" component={NoPermission} />
-      }
-    </Switch>
+        {
+          BankRouteList.map(item => {
+            // console.log(BankRouteList);
+            if (checkRoute(item) && checkUserPermission(item)) {
+              return <Route path={item.key} key={item.key} component={LocalRouterMap[item.key]} exact></Route>
+            }
+            return null
+          })
+        }
+        {/* exact 精确匹配 */}
+        <Redirect from="/" to="/home" exact />
+        {/* 都不满足走此路由 */}
+        {
+          BankRouteList.length > 0 && <Route path="*" component={NoPermission} />
+        }
+      </Switch>
+    </Spin>
   )
 }
+
+//将需要的state的节点注入到与此视图数据相关的组件上
+const mapStateToProps = ({ LoadingReducer: { isLoading } }) => ({
+  // console.log('redux的值', state);
+  isLoading
+})
+
+export default connect(mapStateToProps)(NewsRouter)

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 //高阶组件
 import { withRouter } from 'react-router-dom';
-
+import { connect } from 'react-redux';//引入react-redux容器组件，包裹需要状态管理的组件
 import './index.css'
 
 import { Layout, Menu } from 'antd';
@@ -64,9 +64,11 @@ function SideMenu(props) {
   const selectKeys = [props.location.pathname]
   const openKeys = ["/" + props.location.pathname.split('/')[1]]
   return (
-    <Sider trigger={null} collapsible>
+    <Sider trigger={null} collapsible collapsed={props.isCollapsed}>
       <div style={{ display: "flex", height: "100%", "flexDirection": "column" }}>
-        <div className="logo" >News Publishing System</div>
+        {
+          props.isCollapsed ? <div className="logo" >News</div> : <div className="logo">News Publishing System</div>
+        }
         <div style={{ flex: 1, "overflow": "auto" }}>
           <Menu theme="dark" mode="inline" selectedKeys={selectKeys} defaultOpenKeys={openKeys}>
             {renderMenu(meun)}
@@ -76,5 +78,7 @@ function SideMenu(props) {
     </Sider>
   )
 }
-
-export default withRouter(SideMenu)
+const mapStateToProps = ({ CollApsedReducer: { isCollapsed } }) => ({
+  isCollapsed//就一个函数体可以省略return 但是要加上小括号，否则会被认为是对象
+})
+export default connect(mapStateToProps)(withRouter(SideMenu))

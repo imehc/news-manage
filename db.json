@@ -80,7 +80,7 @@
       "roleState": true,
       "default": false,
       "id": 9,
-      "avatar":"https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80"
+      "avatar": "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80"
     }
   ],
   "roles": [
@@ -587,8 +587,8 @@
       "auditState": 2,
       "publishState": 2,
       "createTime": 1617508814604,
-      "star": 0,
-      "view": 0,
+      "star": 5,
+      "view": 8,
       "id": 11,
       "publishTime": 1617523734431
     },

@@ -23,7 +23,7 @@ export default function NewsPreview(props) {
           >
             <Descriptions size="small" column={3}>
               <Descriptions.Item label="创建者">{newsInfo.author}</Descriptions.Item>
-              <Descriptions.Item label="创建时间">{ }</Descriptions.Item>
+              <Descriptions.Item label="创建时间">{newsInfo.createTime ? moment(newsInfo.createTime).format("YYYY/MM/DD HH:mm:ss") : '-'}</Descriptions.Item>
               <Descriptions.Item label="发布时间">{newsInfo.publishTime ? moment(newsInfo.publishTime).format("YYYY/MM/DD HH:mm:ss") : '-'}</Descriptions.Item>
               <Descriptions.Item label="区域">{newsInfo.region}</Descriptions.Item>
               <Descriptions.Item label="审核状态"><span style={{ color: colorList[newsInfo.auditState] }}>{auditList[newsInfo.auditState]}</span></Descriptions.Item>

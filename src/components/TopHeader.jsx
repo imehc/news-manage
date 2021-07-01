@@ -20,7 +20,7 @@ function TopHeader(props) {
     // console.log(props);
     props.changeCollapsed()
   }
-  const { role: { roleName }, username } = JSON.parse(sessionStorage.getItem("token"))
+  const { role: { roleName }, username, avatar } = JSON.parse(sessionStorage.getItem("token"))
   const menu = (
     <Menu>
       <Menu.Item key={roleName}>
@@ -42,7 +42,7 @@ function TopHeader(props) {
       <div style={{ float: "right" }}>
         <span>欢迎<span style={{ color: 'rgb(135, 206, 235)' }}>{username}</span>回来</span>
         <Dropdown overlay={menu} >
-          <Avatar size="large" icon={<UserOutlined />} style={{ marginLeft: 10 }} />
+          <Avatar size="large" icon={<UserOutlined />} style={{ marginLeft: 10 }} src={avatar ? avatar : ''} />
         </Dropdown>
       </div>
     </Header>
@@ -63,13 +63,13 @@ const mapStateToProps = ({ CollApsedReducer: { isCollapsed } }) => {
   }
 }
 // 将需要绑定的响应事件注入到组件上
-const mapDispatchToProps={
-  changeCollapsed(){
+const mapDispatchToProps = {
+  changeCollapsed() {
     return {
-      type:"change_collapsed",
+      type: "change_collapsed",//一般定义为字符串常量
       // payload:
     }//action
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(withRouter(TopHeader))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TopHeader))

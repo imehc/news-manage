@@ -7,6 +7,22 @@ import './index.css'
 import { Layout, Menu } from 'antd';
 import {
   UserOutlined,
+  HomeOutlined,
+  TeamOutlined,
+  ControlOutlined,
+  NodeIndexOutlined,
+  ShareAltOutlined,
+  SnippetsOutlined,
+  EditOutlined,
+  RestOutlined,
+  CopyOutlined,
+  MonitorOutlined,
+  ReconciliationOutlined,
+  ProfileOutlined,
+  CloudOutlined,
+  CloudServerOutlined,
+  CloudUploadOutlined,
+  CloudSyncOutlined
   // VideoCameraOutlined,
   // UploadOutlined,
 } from '@ant-design/icons';
@@ -15,23 +31,23 @@ const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 const iconList = {
-  "/home": <UserOutlined />,
+  "/home": <HomeOutlined />,
   "/user-manage": <UserOutlined />,
-  "/user-manage/list": <UserOutlined />,
-  "/right-manage": <UserOutlined />,
-  "/right-manage/role/list": <UserOutlined />,
-  "/right-manage/right/list": <UserOutlined />,
-  "/news-manage": <UserOutlined />,
-  "/news-manage/add": <UserOutlined />,
-  "/news-manage/draft": <UserOutlined />,
-  "/news-manage/category": <UserOutlined />,
-  "/audit-manage": <UserOutlined />,
-  "/audit-manage/audit": <UserOutlined />,
-  "/audit-manage/list": <UserOutlined />,
-  "/publish-manage": <UserOutlined />,
-  "/publish-manage/unpublished": <UserOutlined />,
-  "/publish-manage/published": <UserOutlined />,
-  "/publish-manage/sunset": <UserOutlined />,
+  "/user-manage/list":<TeamOutlined />,
+  "/right-manage": <ControlOutlined />,
+  "/right-manage/role/list": <NodeIndexOutlined />,
+  "/right-manage/right/list":<ShareAltOutlined />,
+  "/news-manage": <SnippetsOutlined />,
+  "/news-manage/add": <EditOutlined />,
+  "/news-manage/draft": <RestOutlined />,
+  "/news-manage/category": <CopyOutlined />,
+  "/audit-manage":<MonitorOutlined />,
+  "/audit-manage/audit": <ReconciliationOutlined />,
+  "/audit-manage/list": <ProfileOutlined />,
+  "/publish-manage": <CloudServerOutlined />,
+  "/publish-manage/unpublished":<CloudSyncOutlined />,
+  "/publish-manage/published": <CloudUploadOutlined />,
+  "/publish-manage/sunset": <CloudOutlined />,
 }
 
 function SideMenu(props) {

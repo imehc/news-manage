@@ -103,7 +103,7 @@ export default function Home() {
     var option = {
       title: {
         text: '当前用户新闻分类图示',
-        // subtext: '纯属虚构',
+        // subtext: '',
         left: 'center'
       },
       tooltip: {

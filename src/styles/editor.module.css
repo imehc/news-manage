@@ -1,0 +1,63 @@
+.editorContainer :global(.editor-input) {
+	min-height: 300px;
+	border: 1px solid #d9d9d9;
+	border-radius: 6px;
+	padding: 8px 12px;
+	outline: none;
+}
+
+.editorContainer :global(.editor-input):focus {
+	border-color: #1677ff;
+}
+
+.editorContainer :global(.editor-link) {
+	color: #1677ff;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.toolbar {
+	display: flex;
+	gap: 4px;
+	margin-bottom: 8px;
+	padding: 8px;
+	border: 1px solid #d9d9d9;
+	border-radius: 6px;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.toolbarButton {
+	padding: 4px 8px;
+	border: 1px solid #d9d9d9;
+	border-radius: 4px;
+	background: #fff;
+	cursor: pointer;
+	font-size: 14px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 32px;
+	height: 32px;
+}
+
+.toolbarButton:hover {
+	background: #f0f0f0;
+}
+
+.toolbarButtonActive {
+	background: #1677ff;
+	color: #fff;
+	border-color: #1677ff;
+}
+
+.toolbarButtonActive:hover {
+	background: #4096ff;
+}
+
+.toolbarSeparator {
+	width: 1px;
+	height: 24px;
+	background: #d9d9d9;
+	margin: 0 4px;
+}

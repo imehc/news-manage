@@ -1,61 +1,58 @@
 {
-  "name": "react_project",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "antd": "^4.16.3",
-    "axios": "^0.21.1",
-    "draft-js": "^0.11.7",
-    "draftjs-to-html": "^0.9.1",
-    "echarts": "^5.1.2",
-    "html-to-draftjs": "^1.5.0",
-    "json-server": "^0.17.0",
-    "lodash": "^4.17.21",
-    "nprogress": "^0.2.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-draft-wysiwyg": "^1.14.7",
-    "react-particles-js": "^3.4.1",
-    "react-redux": "^7.2.4",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
-    "redux": "^4.1.0",
-    "redux-devtools-extension": "^2.13.9",
-    "redux-persist": "^6.0.0",
-    "sass": "^1.35.1",
-    "web-vitals": "^1.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "serve:json": "json-server --watch --port 5000 db.json ",
-    "dev":"npm-run-all --parallel serve:json start"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "http-proxy-middleware": "^2.0.0",
-    "npm-run-all": "^4.1.5"
-  }
+	"name": "news-manage",
+	"private": true,
+	"version": "2.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "concurrently \"vite\" \"json-server --watch --port 5000 db.json\"",
+		"build": "tsc -b && vite build",
+		"preview": "vite preview",
+		"serve:json": "json-server --watch --port 5000 db.json",
+		"check": "biome check --write .",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@ant-design/icons": "^6.1.0",
+		"@lexical/html": "^0.41.0",
+		"@lexical/link": "^0.41.0",
+		"@lexical/list": "^0.41.0",
+		"@lexical/react": "^0.41.0",
+		"@lexical/rich-text": "^0.41.0",
+		"@lexical/selection": "^0.41.0",
+		"@lexical/utils": "^0.41.0",
+		"@tsparticles/engine": "^3.9.1",
+		"@tsparticles/react": "^3.0.0",
+		"@tsparticles/slim": "^3.9.1",
+		"antd": "^6.3.1",
+		"date-fns": "^4.1.0",
+		"echarts": "^6.0.0",
+		"lexical": "^0.41.0",
+		"nprogress": "^0.2.0",
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4",
+		"react-router": "^7.13.1",
+		"tsparticles": "^3.9.1",
+		"zustand": "^5.0.11"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.5",
+		"@types/node": "^25.3.3",
+		"@types/nprogress": "^0.2.3",
+		"@types/react": "^19.2.14",
+		"@types/react-dom": "^19.2.3",
+		"@vitejs/plugin-react": "^5.1.4",
+		"concurrently": "^9.2.1",
+		"json-server": "^0.17.4",
+		"typescript": "^5.9.3",
+		"vite": "^7.3.1"
+	},
+	"pnpm": {
+		"overrides": {
+			"esbuild": "^0.26.0",
+			"@esbuild/*": "^0.26.0"
+		},
+		"onlyBuiltDependencies": [
+			"esbuild"
+		]
+	}
 }

@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# 新闻管理系统
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+基于 React 的新闻管理后台，支持新闻发布、审核、用户权限管理等功能。
 
-## Available Scripts
+## 技术栈迁移
 
-In the project directory, you can run:
+本项目从 CRA + JavaScript 迁移至 Vite + TypeScript 现代技术栈。
 
-### `yarn start`
+### 构建与语言
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+| 项目 | 迁移前 | 迁移后 |
+|------|--------|--------|
+| 构建工具 | Create React App (Webpack) | Vite 7 |
+| 语言 | JavaScript | TypeScript 5.9 |
+| 代码规范 | ESLint + Prettier | Biome 2.4 |
+| 包管理器 | npm | pnpm |
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 核心依赖
 
-### `yarn test`
+| 依赖 | 迁移前 | 迁移后 |
+|------|--------|--------|
+| React | 17 | 19 |
+| React Router | v5 (`react-router-dom`) | v7 (`react-router`) |
+| 状态管理 | Redux + react-redux | Zustand 5 |
+| UI 框架 | Ant Design 4 | Ant Design 6 |
+| 图标库 | `@ant-design/icons` 4 | `@ant-design/icons` 6 |
+| 富文本编辑器 | Draft.js (`react-draft-wysiwyg`) | Lexical 0.41 |
+| HTTP 请求 | Axios | 原生 Fetch (封装) |
+| 日期处理 | Moment.js | date-fns 4 |
+| 图表 | ECharts 5 | ECharts 6 |
+| 粒子动画 | `react-particles-js` | `@tsparticles/react` 3 |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 新增依赖
 
-### `yarn build`
+| 依赖 | 版本 | 说明 |
+|------|------|------|
+| `@lexical/html` | 0.41 | Lexical HTML 导入/导出 |
+| `@lexical/link` | 0.41 | Lexical 链接支持 |
+| `@lexical/list` | 0.41 | Lexical 列表支持 |
+| `@lexical/react` | 0.41 | Lexical React 绑定 |
+| `@lexical/rich-text` | 0.41 | Lexical 富文本支持 |
+| `@lexical/selection` | 0.41 | Lexical 选区操作 |
+| `@lexical/utils` | 0.41 | Lexical 工具函数 |
+| `concurrently` | 9 | 并行运行开发服务器与 json-server |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 移除依赖
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| 依赖 | 说明 |
+|------|------|
+| `react-router-dom` | 替换为 `react-router` v7 |
+| `redux` / `react-redux` | 替换为 Zustand |
+| `draft-js` / `react-draft-wysiwyg` | 替换为 Lexical |
+| `axios` | 替换为原生 Fetch 封装 |
+| `moment` | 替换为 date-fns |
+| `react-particles-js` | 替换为 `@tsparticles/react` |
+| `eslint` / `prettier` 相关 | 替换为 Biome |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 开发
 
-### `yarn eject`
+```bash
+# 安装依赖
+pnpm install
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# 启动开发服务器 (Vite + json-server)
+pnpm run dev
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# 类型检查
+pnpm run typecheck
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# 代码检查与格式化
+pnpm run check
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# 构建
+pnpm run build
+```
 
-## Learn More
+## 项目结构
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+src/
+├── components/          # 公共组件 (SideMenu, TopHeader, NewsEditor 等)
+├── lib/                 # 工具库 (http 封装, 类型定义)
+├── store/               # Zustand 状态管理
+├── styles/              # CSS Modules 样式
+└── views/               # 页面
+    ├── login/           # 登录页
+    ├── news/            # 前台新闻页
+    └── sandbox/         # 后台管理
+        ├── home/        # 首页 (ECharts 图表)
+        ├── user-manage/ # 用户管理
+        ├── right-manage/# 权限管理 (角色/权限)
+        ├── news-manage/ # 新闻管理 (撰写/草稿/分类/预览/更新)
+        ├── audit-manage/# 审核管理
+        └── publish-manage/ # 发布管理
+```
